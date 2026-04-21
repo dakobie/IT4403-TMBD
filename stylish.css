@@ -22,6 +22,7 @@
 }
 
 .movie-card {
+  position: relative;
   width: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -57,6 +58,77 @@
 .movie-card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.fav-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0, 0, 0, 0.55);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  z-index: 10;
+}
+
+.fav-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.15);
+}
+
+.fav-btn.active {
+  color: #e74c3c;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.fav-btn-detail {
+  margin-top: 12px;
+  padding: 8px 18px;
+  background: #1c1c1c;
+  border: 2px solid #555;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.fav-btn-detail:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.fav-btn-detail.active {
+  border-color: #e74c3c;
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.remove-fav-btn {
+  display: block;
+  width: calc(100% - 16px);
+  margin: 4px 8px 8px;
+  padding: 5px;
+  background: transparent;
+  border: 1px solid #555;
+  color: #aaa;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.remove-fav-btn:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
 }
 
 .category-title {
@@ -243,6 +315,9 @@
 
 /* Right side */
 .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 /* Buttons */
@@ -259,8 +334,49 @@
 }
 
 /* Push page content below navbar */
-#homeView, #searchView {
+#homeView, #searchView, #favView {
   padding-top: 70px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px 8px;
+  gap: 4px;
+  transition: background 0.2s;
+}
+
+.search-bar:focus-within {
+  background: rgba(255, 255, 255, 0.18);
+  outline: 1px solid #01b4e4;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 0.9rem;
+  width: 180px;
+}
+
+.search-bar input::placeholder { color: #aaa; }
+
+.search-bar button {
+  background: none;
+  border: none;
+  color: #01b4e4;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 4px;
+}
+
+.search-bar button:hover { color: white; }
+
+@media (max-width: 600px) {
+  .search-bar input { width: 110px; }
 }
 
 /* Dropdown */

@@ -15,7 +15,6 @@
 
 <body>
 
-
 <div class="navbar">
     <div class="nav-left">
         <button id="homeBtn">Home</button>
@@ -32,16 +31,25 @@
     </div>
 
     <div class="nav-right">
-        <button id="searchBtn">Search</button>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search movies...">
+            <button id="searchSubmit">Search</button>
+        </div>
+
+        <button id="favBtn">&#9829; Favorites</button>
     </div>
 </div>
 
 <div id="homeView"></div>
-<div id="searchView" style="display:none;">
-    <input type="text" id="searchInput" placeholder="Search movies...">
-    <button id="searchSubmit">Search</button>
-    <div id="searchResults"></div>
+
+<!-- the fav bar -->
+<div id="favView" style="display:none;">
+    <h2 class="category-title">My Favorites</h2>
+    <div id="favResults" class="movie-grid"></div>
+    <p id="favEmpty" style="display:none; text-align:center; color:#aaa;">No favorites yet. Click ♥ on any movie to save it!</p>
 </div>
+
 
 
 <script src="scri.js"></script>
