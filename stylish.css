@@ -411,11 +411,7 @@
   background: #333;
 }
 
-/* Shows dropdown on hover */
-.dropdown:hover .dropdown-content {
-  visibility: visible;
-  opacity: 1;
-}
+
 
 
 /* Load more button */
