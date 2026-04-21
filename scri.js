@@ -18,7 +18,7 @@ $(document).ready(function () {
   let lastPageLoaded = 1;
 
   function getFavorites() {
-  return JSON.parse(localStorage.getItem("movieFavorites")) || "[]");
+  return JSON.parse(localStorage.getItem("movieFavorites") || "[]");
     }
 
   function saveFavorites(favs) {
