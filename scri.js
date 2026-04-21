@@ -393,7 +393,8 @@ function displayMovieDetails(movie) {
 
 }
 
- $(document).on("click", ".fav-btn-detail", function () {
+ $(document).on("click", ".fav-btn-detail", function (e) {
+     e.stopPropagation();
     const btn = $(this);
     const movie = {
       id: parseInt(btn.data("id")),
