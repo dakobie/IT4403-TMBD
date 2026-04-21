@@ -546,7 +546,7 @@ $(document).on('click', '#backBtn', function() {
   setTimeout(() => {
     $(window).scrollTop(lastScroll);
   }, 500);
-});
+}});
 
 
  function searchMovies(query) {
