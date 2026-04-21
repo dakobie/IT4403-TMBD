@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  const apiKey = "4566b74db4c7b0ce5e233fa665e4ca17";
+  const apiKey = "626d8d260d921caff14e0afb1daded65";
 
   let currentCategory = "popular";
 
@@ -10,7 +10,7 @@ $(document).ready(function () {
     now_playing: "Now Playing Movies",
     upcoming: "Upcoming Movies"
   };
-
+  let lastSearchQ =null;
   let lastScroll = 0;
   let currentPage = 1;
   let totalPages = 1;
@@ -279,6 +279,7 @@ $(document).on("click", "#loadMoreBtn", function () {
     let shortOverview = movie.overview.length > 100
       ? movie.overview.substring(0, 100) + "..."
       : movie.overview;
+
     const favClass = isFavorite(movie.id) ? "fav-btn active" : "fav-btn";
     const favIcon  = isFavorite(movie.id) ? "&#9829;" : "&#9825;";
 
@@ -489,6 +490,7 @@ $(document).on('click', '.view-more-btn', function() {
 
   function handleCategoryChange(category) {
   if (!category) return;
+  lastSearchQ = null;
   currentCategory = category;
   loadMovies(category);
 }
@@ -535,8 +537,11 @@ dropdown.addEventListener("mouseleave", () => {
 
 $(document).on('click', '#backBtn', function() {
   $("#homeView").removeClass("detailed-view");
-  $("#categorySelect").val(currentCategory);
-  loadMovies(currentCategory, lastPageLoaded);
+  if (lastSearchQ) {
+      searchMovies(lastSearchQ);
+    } else {
+      let cat = currentCategory || "popular";
+      loadMovies(cat, lastPageLoaded);
 
   setTimeout(() => {
     $(window).scrollTop(lastScroll);
@@ -546,6 +551,7 @@ $(document).on('click', '#backBtn', function() {
 
  function searchMovies(query) {
     if (!query.trim()) return;
+    lastSearchQ = query;
 
     // Show homeView, hide others
     $("#favView").hide();
