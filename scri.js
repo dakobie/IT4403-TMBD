@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-  const apiKey = "626d8d260d921caff14e0afb1daded65";
+  const apiKey = "4566b74db4c7b0ce5e233fa665e4ca17";
 
   let currentCategory = "popular";
 
