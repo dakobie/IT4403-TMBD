@@ -279,7 +279,8 @@ $(document).on("click", "#loadMoreBtn", function () {
     let shortOverview = movie.overview.length > 100
       ? movie.overview.substring(0, 100) + "..."
       : movie.overview;
-
+    const favClass = isFavorite(movie.id) ? "fav-btn active" : "fav-btn";
+    const favIcon  = isFavorite(movie.id) ? "&#9829;" : "&#9825;";
 
     html += `
       <div class="movie-card" data-id="${movie.id}">
