@@ -286,6 +286,13 @@ $(document).on("click", "#loadMoreBtn", function () {
     html += `
       <div class="movie-card" data-id="${movie.id}">
         <img src="${imageUrl}" alt="poster">
+         <button class="${favClass}"
+      data-id="${movie.id}"
+      data-title="${movie.title}"
+      data-poster="${movie.poster_path || ''}"
+      data-overview="${movie.overview.replace(/"/g, '&quot;')}"
+      data-rating="${movie.vote_average}"
+      data-date="${movie.release_date}">${favIcon}</button>
         <h3>${movie.title}</h3>
         <p>${shortOverview}</p>
       </div>
