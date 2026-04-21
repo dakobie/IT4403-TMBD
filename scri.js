@@ -538,15 +538,15 @@ dropdown.addEventListener("mouseleave", () => {
 $(document).on('click', '#backBtn', function() {
   $("#homeView").removeClass("detailed-view");
   if (lastSearchQ) {
-      searchMovies(lastSearchQ);
-    } else {
-      let cat = currentCategory || "popular";
-      loadMovies(cat, lastPageLoaded);
-
-  setTimeout(() => {
-    $(window).scrollTop(lastScroll);
-  }, 500);
-}});
+    searchMovies(lastSearchQ);
+  } else {
+    let cat = currentCategory || "popular";
+    loadMovies(cat, lastPageLoaded);
+    setTimeout(() => {
+      $(window).scrollTop(lastScroll);
+    }, 500);
+  }
+});
 
 
  function searchMovies(query) {
