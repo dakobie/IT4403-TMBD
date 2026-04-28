@@ -3,6 +3,7 @@
 <head>
     <title>Movie App</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <link rel="stylesheet" href="stylish.css">
 </head>
 <style>
@@ -14,6 +15,13 @@
 </style>
 
 <body>
+<!-- Login Screen -->
+<div id="loginView">
+    <h1>Movie App</h1>
+    <p>Please log in to continue</p>
+    <button id="loginBtn">Log In</button>
+
+</div>
 
 <div class="navbar">
     <div class="nav-left">
@@ -38,6 +46,7 @@
         </div>
 
         <button id="favBtn">&#9829; Favorites</button>
+        <button id="logoutBtn">Log Out</button>
     </div>
 </div>
 

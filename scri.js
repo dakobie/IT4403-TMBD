@@ -1,3 +1,54 @@
+// ===================== AUTH0 SETUP =====================
+let auth0Client = null;
+
+async function initAuth0() {
+  auth0Client = await auth0.createAuth0Client({
+     domain: "dev-aniq1d173yo5omos.us.auth0.com",
+     clientId: "fboaQcyDCxm1AfJImcEJWZTyzhERgLy4",
+    authorizationParams: {
+      redirect_uri: "https://dakobie.github.io/IT4403-TMBD/"
+    }
+  });
+
+  // Handle redirect callback after login
+  if (location.search.includes("code=") && location.search.includes("state=")) {
+    await auth0Client.handleRedirectCallback();
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  const isAuthenticated = await auth0Client.isAuthenticated();
+
+  if (isAuthenticated) {
+    showApp();
+  } else {
+    showLogin();
+  }
+}
+
+function showLogin() {
+  $("#loginView").show();
+  $(".navbar").hide();
+  $("#homeView").hide();
+  $("#favView").hide();
+}
+
+function showApp() {
+  $("#loginView").hide();
+  $(".navbar").show();
+}
+
+$("#loginBtn").click(async () => {
+  await auth0Client.loginWithRedirect();
+});
+
+$("#logoutBtn").click(async () => {
+  await auth0Client.logout({
+    logoutParams: { returnTo: "https://dakobie.github.io/IT4403-TMBD/" }
+  });
+});
+
+initAuth0();
+// =======================================================
 $(document).ready(function () {
 
   const apiKey = "626d8d260d921caff14e0afb1daded65";
