@@ -1,5 +1,6 @@
 // ===================== AUTH0 SETUP =====================
 let auth0Client = null;
+let currentUserId = null;  // will be set to the Auth0 user's unique ID after login
 
 async function initAuth0() {
   auth0Client = await auth0.createAuth0Client({
@@ -19,6 +20,8 @@ async function initAuth0() {
   const isAuthenticated = await auth0Client.isAuthenticated();
 
   if (isAuthenticated) {
+    const user = await auth0Client.getUser();
+    currentUserId = user.sub; //this is a unique ID
     showApp();
   } else {
     showLogin();
@@ -37,13 +40,15 @@ function showApp() {
   $(".navbar").show();
 }
 
-$("#loginBtn").click(async () => {
+document.getElementById("loginBtn").addEventListener("click", async () => {
   await auth0Client.loginWithRedirect();
 });
 
-$("#logoutBtn").click(async () => {
+document.getElementById("logoutBtn").addEventListener("click", async () => {
   await auth0Client.logout({
-    logoutParams: { returnTo: "https://dakobie.github.io/IT4403-TMBD/" }
+    logoutParams: {
+      returnTo: "https://dakobie.github.io/IT4403-TMBD/"
+    }
   });
 });
 
@@ -68,12 +73,15 @@ $(document).ready(function () {
   let loadMoreVisible = false;
   let lastPageLoaded = 1;
 
+function getFavKey() {
+    return "movieFavorites_" + (currentUserId || "guest");
+  }
   function getFavorites() {
-  return JSON.parse(localStorage.getItem("movieFavorites") || "[]");
+  return JSON.parse(localStorage.getItem(getFavKey()) || "[]");
     }
 
   function saveFavorites(favs) {
-      localStorage.setItem("movieFavorites", JSON.stringify(favs));
+      localStorage.setItem(getFavKey(), JSON.stringify(favs));
     }
 
     function isFavorite(movieId) {
