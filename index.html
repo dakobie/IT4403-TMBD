@@ -6,22 +6,8 @@
     <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
     <link rel="stylesheet" href="stylish.css">
 </head>
-<style>
-    body {
-        margin: 0;
-        padding: 30px;
-        font-family: Arial, sans-serif;
-    }
-</style>
 
 <body>
-<!-- Login Screen -->
-<div id="loginView">
-    <h1>Movie App</h1>
-    <p>Please log in to continue</p>
-    <button id="loginBtn">Log In</button>
-
-</div>
 
 <div class="navbar">
     <div class="nav-left">
@@ -39,27 +25,25 @@
     </div>
 
     <div class="nav-right">
-
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search movies...">
             <button id="searchSubmit">Search</button>
         </div>
 
-        <button id="favBtn">&#9829; Favorites</button>
-        <button id="logoutBtn">Log Out</button>
+        <button id="favBtn">&#9829; Favourites</button>
+        <span id="navUserName" style="display:none;"></span>
+        <button id="loginBtn">Log In</button>
+        <button id="logoutBtn" style="display:none;">Log Out</button>
     </div>
 </div>
 
 <div id="homeView"></div>
 
-<!-- the fav bar -->
 <div id="favView" style="display:none;">
-    <h2 class="category-title">My Favorites</h2>
+    <h2 class="category-title">My Favourites</h2>
     <div id="favResults" class="movie-grid"></div>
-    <p id="favEmpty" style="display:none; text-align:center; color:#aaa;">No favorites yet. Click ♥ on any movie to save it!</p>
+    <p id="favEmpty" style="display:none; text-align:center; color:#aaa;">No favourites yet. Click ♥ on any movie to save it!</p>
 </div>
-
-
 
 <script src="scri.js"></script>
 
